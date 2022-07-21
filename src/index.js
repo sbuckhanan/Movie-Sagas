@@ -18,9 +18,12 @@ function* rootSaga() {
 }
 
 function* movieDetails(action) {
+	//? Hold the id that was sent over in dispatch for the MovieListItem component on click
 	const id = action.payload;
 	try {
+		//? Request the details from the server by ID
 		const details = yield axios.get(`/api/movie/${id}`);
+		//? After details come back send them to the reducer to update state
 		yield put({ type: 'SET_DETAILS', payload: details.data });
 	} catch (err) {
 		console.log('get details error', err);
@@ -61,7 +64,8 @@ const genres = (state = [], action) => {
 	}
 };
 
-// Used to store the movie genres
+// Used to store the movie details that were clicked
+// Using an object because I am only working with 1 movie at a time
 const details = (state = { title: '', description: '', poster: '' }, action) => {
 	switch (action.type) {
 		case 'SET_DETAILS':
@@ -80,6 +84,7 @@ const storeInstance = createStore(
 	combineReducers({
 		movies,
 		genres,
+		details,
 	}),
 	// Add sagaMiddleware to our store
 	applyMiddleware(sagaMiddleware, logger)
