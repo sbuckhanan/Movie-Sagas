@@ -12,6 +12,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import EditMovie from '../EditMovie/EditMovie';
 
+// TODO Ability to add or remove a genre from a movie, Move sagas and reducers to their own folders/files (files created)
+
 //? Define the things shown on the navbar
 const navItems = [
 	{ name: 'Home', path: '/' },
