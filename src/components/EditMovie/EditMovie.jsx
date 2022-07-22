@@ -62,7 +62,7 @@ function EditMovie() {
 				/>
 				<div className='buttonWrapper'>
 					<Button onClick={() => history.push(`/details/${id}`)}>Cancel</Button>
-					<Button onClick={handleSubmit}>Submit</Button>
+					<Button onClick={handleSubmit}>Save</Button>
 				</div>
 			</Box>
 		</>
