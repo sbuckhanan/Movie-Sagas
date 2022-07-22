@@ -6,6 +6,9 @@ body {
 		rgba(53, 186, 154, 1) 47%,
 		rgba(113, 241, 255, 1) 95%
 	);
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
 }
 
 .App {
