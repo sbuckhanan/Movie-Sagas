@@ -22,9 +22,10 @@ function* movieDetails(action) {
 	const id = action.payload;
 	try {
 		//? Request the details from the server by ID
-		const details = yield axios.get(`/api/movie/${id}`);
+		const details = yield axios.get(`/api/movie/details/${id}`);
+		yield console.log('DETAILS OF RETURN', details);
 		//? After details come back send them to the reducer to update state
-		yield put({ type: 'SET_DETAILS', payload: details.data });
+		yield put({ type: 'SET_DETAILS', payload: details.data[0] });
 	} catch (err) {
 		console.log('get details error', err);
 	}
@@ -66,13 +67,14 @@ const genres = (state = [], action) => {
 
 // Used to store the movie details that were clicked
 // Using an object because I am only working with 1 movie at a time
-const details = (state = { title: '', description: '', poster: '' }, action) => {
+const details = (state = { title: '', description: '', poster: '', array_agg: [] }, action) => {
 	switch (action.type) {
 		case 'SET_DETAILS':
 			return {
 				title: action.payload.title,
 				description: action.payload.description,
 				poster: action.payload.poster,
+				array_agg: action.payload.array_agg,
 			};
 		default:
 			return state;
