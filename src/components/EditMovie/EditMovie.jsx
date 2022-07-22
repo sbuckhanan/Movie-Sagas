@@ -10,17 +10,24 @@ function EditMovie() {
 	const history = useHistory();
 	const details = useSelector((store) => store.details);
 	const dispatch = useDispatch();
+	//? used to get the parms of the id from the url in case of page refresh
 	let { id } = useParams();
 
-	const [movieTitle, seMovieTitle] = useState('');
-	const [movieDescription, setMovieDescription] = useState('');
+	//? Local state to hold our input values
+	const [movieTitle, setMovieTitle] = useState(details.title);
+	const [movieDescription, setMovieDescription] = useState(details.description);
 
+	//? handle page reload
+	//? get the details of the id we are editing on page refresh
 	useEffect(() => {
 		dispatch({ type: 'GET_DETAILS', payload: id });
 	}, []);
 
 	const handleSubmit = () => {
-		dispatch({ type: 'UPDATE_DETAILS', payload: { movieTitle, movieDescription } });
+		//? Dispatch to saga to update the movie
+		dispatch({ type: 'UPDATE_DETAILS', payload: { id, movieTitle, movieDescription } });
+		//? Go to the details page of the id we are working on
+		history.push(`/details/${id}`);
 	};
 
 	return (
@@ -40,7 +47,7 @@ function EditMovie() {
 					rows={6}
 					label='Title'
 					variant='filled'
-					defaultValue={details.title}
+					value={movieTitle}
 					onChange={(e) => setMovieTitle(e.target.value)}
 				/>
 				<TextField
@@ -50,7 +57,7 @@ function EditMovie() {
 					rows={6}
 					label='Description'
 					variant='filled'
-					defaultValue={details.description}
+					value={movieDescription}
 					onChange={(e) => setMovieDescription(e.target.value)}
 				/>
 				<div className='buttonWrapper'>

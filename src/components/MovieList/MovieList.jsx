@@ -7,6 +7,7 @@ function MovieList() {
 	const dispatch = useDispatch();
 	const movies = useSelector((store) => store.movies);
 
+	//? get our movies on page load or refresh
 	useEffect(() => {
 		dispatch({ type: 'FETCH_MOVIES' });
 	}, []);

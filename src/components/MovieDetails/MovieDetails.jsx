@@ -7,8 +7,10 @@ function MovieDetails() {
 	const history = useHistory();
 	const details = useSelector((store) => store.details);
 	const dispatch = useDispatch();
+	//? use to get the id from the url to update page
 	let { id } = useParams();
 
+	//? On page load or refresh dispatch to get the information of the movie we are working with
 	useEffect(() => {
 		dispatch({ type: 'GET_DETAILS', payload: id });
 	}, []);
