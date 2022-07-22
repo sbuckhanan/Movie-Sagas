@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import EditMovie from '../EditMovie/EditMovie';
 
 //? Define the things shown on the navbar
 const navItems = [
@@ -22,7 +23,7 @@ function App() {
 	return (
 		<Router>
 			<div className='App'>
-				<AppBar component='nav'>
+				<AppBar className='appBar' component='nav'>
 					<Toolbar>
 						<Typography
 							variant='h6'
@@ -39,11 +40,15 @@ function App() {
 						</Box>
 					</Toolbar>
 				</AppBar>
+				<Toolbar />
 				<Route path='/' exact>
 					<MovieList />
 				</Route>
 				<Route path='/details/:id' exact>
 					<MovieDetails />
+				</Route>
+				<Route path='/edit/:id' exact>
+					<EditMovie />
 				</Route>
 
 				{/* Details page */}

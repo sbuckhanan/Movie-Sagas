@@ -29,6 +29,9 @@ function MovieDetails() {
 			<Button variant='contained' onClick={() => history.push('/')}>
 				Back To List
 			</Button>
+			<Button variant='contained' onClick={() => history.push(`/edit/${id}`)}>
+				Edit Movie
+			</Button>
 		</>
 	);
 }
