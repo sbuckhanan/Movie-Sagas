@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 function MovieDetails() {
 	const history = useHistory();
@@ -25,7 +26,9 @@ function MovieDetails() {
 				</ul>
 			</div>
 
-			<button onClick={() => history.push('/')}>Back To List</button>
+			<Button variant='contained' onClick={() => history.push('/')}>
+				Back To List
+			</Button>
 		</>
 	);
 }
