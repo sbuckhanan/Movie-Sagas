@@ -17,10 +17,14 @@ router.get('/', (req, res) => {
 
 router.get('/details/:id', (req, res) => {
 	const id = req.params.id;
-	const query = `SELECT * FROM movies WHERE id=$1 ORDER BY "title" ASC`;
+	// const query = `SELECT * FROM movies WHERE id=$1 ORDER BY "title" ASC`;
+	const query = `SELECT movies.id, title, poster, description, array_agg(genres.name) FROM movies JOIN movies_genres ON movies.id = movies_genres.movie_id JOIN genres ON genres.id = movies_genres.genre_id
+	WHERE movies.id = $1
+	GROUP BY movies.id;`;
 	pool
 		.query(query, [id])
 		.then((result) => {
+			console.log(result.rows);
 			res.send(result.rows);
 		})
 		.catch((err) => {
