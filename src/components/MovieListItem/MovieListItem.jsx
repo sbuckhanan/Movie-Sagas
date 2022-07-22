@@ -16,9 +16,11 @@ function MovieListItem({ movie }) {
 	const history = useHistory();
 	const dispatch = useDispatch();
 
+	//? used to send our movie id over to sagas to get the specific details of that movie
 	const handleDetails = () => {
-		//? Dispatch here
+		//? Dispatch here to sagas
 		dispatch({ type: 'GET_DETAILS', payload: movie.id });
+		//? send us to the details page of that id
 		history.push(`/details/${movie.id}`);
 	};
 

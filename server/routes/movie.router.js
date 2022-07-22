@@ -18,12 +18,15 @@ router.get('/', (req, res) => {
 		});
 });
 
+//? Specific get route to get a movie by id along with all of the genres
 router.get('/details/:id', (req, res) => {
+	//? Hold our id that we sent from client
 	const id = req.params.id;
-	// const query = `SELECT * FROM movies WHERE id=$1 ORDER BY "title" ASC`;
+	//? Get the specific movie alone with the genres in an array
 	const query = `SELECT movies.id, title, poster, description, array_agg(genres.name) FROM movies JOIN movies_genres ON movies.id = movies_genres.movie_id JOIN genres ON genres.id = movies_genres.genre_id
 	WHERE movies.id = $1
 	GROUP BY movies.id;`;
+	//? run our query
 	pool
 		.query(query, [id])
 		.then((result) => {
@@ -74,6 +77,22 @@ router.post('/', (req, res) => {
 		})
 		.catch((err) => {
 			console.log(err);
+			res.sendStatus(500);
+		});
+});
+//? Put request to update our movie information
+router.put('/update/:id', (req, res) => {
+	//? object destructure req.body
+	const { id, movieTitle, movieDescription } = req.body;
+	//? query that we are running
+	const queryText = `UPDATE movies SET title=$1, description=$2 WHERE id=$3`;
+	pool
+		.query(queryText, [movieTitle, movieDescription, id])
+		.then((result) => {
+			res.sendStatus(200);
+		})
+		.catch((err) => {
+			console.log('ERROR: UPDATE movie', err);
 			res.sendStatus(500);
 		});
 });
