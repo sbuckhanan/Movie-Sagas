@@ -45,12 +45,6 @@ function MovieListItem({ movie }) {
 			</Card>
 		</>
 	);
-	// return (
-	// 	<div key={movie.id} onClick={handleDetails}>
-	// 		<h3>{movie.title}</h3>
-	// 		<img src={movie.poster} alt={movie.title} />
-	// 	</div>
-	// );
 }
 
 export default MovieListItem;
