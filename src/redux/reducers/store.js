@@ -5,6 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import movies from './movies-reducer';
 import genres from './genres-reducer';
 import details from './details-reducer';
+import search from './search-reducer';
 import rootSaga from '../sagas/root-saga';
 
 // Create sagaMiddleware
@@ -16,6 +17,7 @@ const storeInstance = createStore(
 		movies,
 		genres,
 		details,
+		search,
 	}),
 	// Add sagaMiddleware to our store
 	applyMiddleware(sagaMiddleware, logger)
