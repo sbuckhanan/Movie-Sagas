@@ -4,6 +4,7 @@ import MovieList from '../MovieList/MovieList';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import EditMovie from '../EditMovie/EditMovie';
 import Header from '../Header/Header';
+import MovieSearch from '../MovieSearch/MovieSearch';
 
 // TODO Ability to add or remove a genre from a movie
 
@@ -20,6 +21,9 @@ function App() {
 				</Route>
 				<Route path='/edit/:id' exact>
 					<EditMovie />
+				</Route>
+				<Route path='/search/:id' exact>
+					<MovieSearch />
 				</Route>
 
 				{/* Details page */}

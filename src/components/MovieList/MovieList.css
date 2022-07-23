@@ -1,4 +1,12 @@
 .movies {
-    display : flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
+}
+.formHome {
+	position: relative;
+	left: 30%;
+}
+.movieList {
+	position: relative;
+	left: -2.5%;
 }

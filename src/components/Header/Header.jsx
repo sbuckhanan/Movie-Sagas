@@ -5,13 +5,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+import './Header.css';
 
 function Header() {
 	//? Define the things shown on the navbar
 	const navItems = [
 		{ name: 'Home', path: '/' },
-		{ name: 'About', path: '/about' },
-		{ name: 'Home', path: '/contact' },
+		// { name: 'About', path: '/about' },
+		// { name: 'Home', path: '/contact' },
 	];
 
 	return (
@@ -19,6 +20,7 @@ function Header() {
 			<AppBar className='appBar' component='nav'>
 				<Toolbar>
 					<Typography
+						className='title'
 						variant='h6'
 						component='div'
 						sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
@@ -26,7 +28,7 @@ function Header() {
 					</Typography>
 					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 						{navItems.map((item, i) => (
-							<Link to={item.path} key={i}>
+							<Link className='navLink' to={item.path} key={i}>
 								<Button sx={{ color: '#fff' }}>{item.name}</Button>
 							</Link>
 						))}
