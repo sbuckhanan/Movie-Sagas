@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import movies from './movies-reducer';
 import genres from './genres-reducer';
 import details from './details-reducer';
-import rootSaga from '../..';
+import rootSaga from '../sagas/root-saga';
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
