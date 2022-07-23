@@ -5,7 +5,7 @@ import MovieDetails from '../MovieDetails/MovieDetails';
 import EditMovie from '../EditMovie/EditMovie';
 import Header from '../Header/Header';
 
-// TODO Ability to add or remove a genre from a movie, Move sagas and reducers to their own folders/files (files created)
+// TODO Ability to add or remove a genre from a movie
 
 function App() {
 	return (
