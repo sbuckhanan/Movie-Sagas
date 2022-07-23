@@ -8,7 +8,6 @@ import { useState } from 'react';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
-import TextField from '@mui/material/TextField';
 
 function MovieList() {
 	const dispatch = useDispatch();
@@ -20,13 +19,20 @@ function MovieList() {
 		dispatch({ type: 'FETCH_MOVIES' });
 	}, []);
 
+	const handleSearch = (e) => {
+		e.preventDefault();
+		console.log('SEARCH FOR', searchString);
+		setSearchString('');
+	};
+
 	return (
 		<main>
 			<Box
 				className='form'
 				component='form'
 				sx={{
-					'& > :not(style)': { m: 1, width: '25ch' },
+					width: 500,
+					maxWidth: '100%',
 				}}
 				noValidate
 				autoComplete='off'>
@@ -40,9 +46,11 @@ function MovieList() {
 						label='Search'
 					/>
 				</FormControl>
-				<Button>Save</Button>
+				<Button variant='contained' onClick={handleSearch}>
+					Search
+				</Button>
 			</Box>
-			<h1>MovieList</h1>
+			<h1 className='movieList'>MovieList</h1>
 			<section className='movies'>
 				{movies.map((movie) => {
 					return <MovieListItem movie={movie} key={movie.id} />;
