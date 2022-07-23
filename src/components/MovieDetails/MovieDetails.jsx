@@ -42,7 +42,7 @@ function MovieDetails() {
 		<>
 			<div>
 				<h3>{details.title}</h3>
-				<img src={details.poster} alt={details.title} />
+				<img className='posterPic' src={details.poster} alt={details.title} />
 				<p>{details.description}</p>
 				<ul>
 					{details.array_agg.map((genre, i) => (
