@@ -6,16 +6,11 @@ import App from './components/App/App.js';
 import { Provider } from 'react-redux';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
-import createSagaMiddleware from 'redux-saga';
-//? Reducers imports
-import movies from './redux/reducers/movies-reducer';
-import genres from './redux/reducers/genres-reducer';
-import details from './redux/reducers/details-reducer';
+//? import store
+import storeInstance from './redux/reducers/store';
 
 // Create the rootSaga generator function
-function* rootSaga() {
+export default function* rootSaga() {
 	yield takeEvery('FETCH_MOVIES', fetchAllMovies);
 	yield takeEvery('GET_DETAILS', movieDetails);
 	yield takeEvery('UPDATE_DETAILS', updateMovie);
@@ -60,23 +55,6 @@ function* updateMovie(action) {
 		console.log('ERROR UPDATING', err);
 	}
 }
-
-// Create sagaMiddleware
-const sagaMiddleware = createSagaMiddleware();
-
-// Create one store that all components can use
-const storeInstance = createStore(
-	combineReducers({
-		movies,
-		genres,
-		details,
-	}),
-	// Add sagaMiddleware to our store
-	applyMiddleware(sagaMiddleware, logger)
-);
-
-// Pass rootSaga into our sagaMiddleware
-sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
 	<React.StrictMode>
