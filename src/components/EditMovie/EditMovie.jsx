@@ -1,10 +1,11 @@
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import './EditMovie.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 function EditMovie() {
 	const history = useHistory();
@@ -30,8 +31,25 @@ function EditMovie() {
 		history.push(`/details/${id}`);
 	};
 
+	const addGenre = (e) => {
+		//? hold the id of the genre we clicked
+		const genreId = Number(e.target.value);
+		console.log(genreId);
+		//? dispatch to update grenres in sagas
+		dispatch({ type: 'UPDATE_GENRE', payload: { type: 'ADD', id, genreId } });
+	};
+
+	const removeGenre = (e) => {
+		//? hold the id of the genre we clicked
+		const genreId = Number(e.target.value);
+		console.log(genreId);
+		//? dispatch to update grenres in sagas
+		dispatch({ type: 'UPDATE_GENRE', payload: { type: 'REMOVE', id, genreId } });
+	};
+
 	return (
 		<>
+			<h3 className='editMovie'>Edit Movie</h3>
 			<Box
 				className='form'
 				component='form'
@@ -65,6 +83,92 @@ function EditMovie() {
 					<Button onClick={handleSubmit}>Save</Button>
 				</div>
 			</Box>
+			<h3>Current Genres</h3>
+			<p>{details.array_agg.map((genre) => `${genre} `)}</p>
+			<h3 className='editMovie'>Add Genres</h3>
+			<ButtonGroup variant='contained' aria-label='outlined primary button group'>
+				<Button onClick={addGenre} value='1'>
+					Adventure
+				</Button>
+				<Button onClick={addGenre} value='2'>
+					Animated
+				</Button>
+				<Button onClick={addGenre} value='3'>
+					Biographical
+				</Button>
+				<Button onClick={addGenre} value='4'>
+					Comedy
+				</Button>
+				<Button onClick={addGenre} value='5'>
+					Disaster
+				</Button>
+				<Button onClick={addGenre} value='6'>
+					Drama
+				</Button>
+				<Button onClick={addGenre} value='7'>
+					Epic
+				</Button>
+				<Button onClick={addGenre} value='8'>
+					Fantasy
+				</Button>
+				<Button onClick={addGenre} value='9'>
+					Musical
+				</Button>
+				<Button onClick={addGenre} value='10'>
+					Romantic
+				</Button>
+				<Button onClick={addGenre} value='11'>
+					Science Fiction
+				</Button>
+				<Button onClick={addGenre} value='12'>
+					Space-Opera
+				</Button>
+				<Button onClick={addGenre} value='13'>
+					Superhero
+				</Button>
+			</ButtonGroup>
+			<h3 className='editMovie'>Remove Genres</h3>
+			<ButtonGroup color='error' variant='contained' aria-label='outlined primary button group'>
+				<Button onClick={removeGenre} value='1'>
+					Adventure
+				</Button>
+				<Button onClick={removeGenre} value='2'>
+					Animated
+				</Button>
+				<Button onClick={removeGenre} value='3'>
+					Biographical
+				</Button>
+				<Button onClick={removeGenre} value='4'>
+					Comedy
+				</Button>
+				<Button onClick={removeGenre} value='5'>
+					Disaster
+				</Button>
+				<Button onClick={removeGenre} value='6'>
+					Drama
+				</Button>
+				<Button onClick={removeGenre} value='7'>
+					Epic
+				</Button>
+				<Button onClick={removeGenre} value='8'>
+					Fantasy
+				</Button>
+				<Button onClick={removeGenre} value='9'>
+					Musical
+				</Button>
+				<Button onClick={removeGenre} value='10'>
+					Romantic
+				</Button>
+				<Button onClick={removeGenre} value='11'>
+					Science Fiction
+				</Button>
+				<Button onClick={removeGenre} value='12'>
+					Space-Opera
+				</Button>
+				<Button onClick={removeGenre} value='13'>
+					Superhero
+				</Button>
+			</ButtonGroup>
 		</>
 	);
 }

@@ -4,9 +4,13 @@
 	align-items: center;
 	align-content: center;
 	text-align: center;
-	left: 38%;
+	left: 41%;
 }
 .form {
 	position: relative;
 	left: -2%;
+}
+.editMovie {
+	position: relative;
+	left: -2.5%;
 }
