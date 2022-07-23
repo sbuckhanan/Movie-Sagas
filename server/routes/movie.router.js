@@ -39,6 +39,30 @@ router.get('/details/:id', (req, res) => {
 		});
 });
 
+//? Specific get route to get all movies matching the search
+router.get('/search/:searchString', (req, res) => {
+	//? Hold our id that we sent from client
+	const searchString = req.params.searchString;
+	//? Get the specific movie alone with the genres in an array
+	const query = `SELECT movies.id, title, poster, description, array_agg(genres.name) FROM movies JOIN movies_genres ON movies.id = movies_genres.movie_id JOIN genres ON genres.id = movies_genres.genre_id
+	WHERE movies.title ILIKE $1
+	GROUP BY movies.id;`;
+	// const query = `SELECT movies.id, title, poster, description, array_agg(genres.name) FROM movies JOIN movies_genres ON movies.id = movies_genres.movie_id JOIN genres ON genres.id = movies_genres.genre_id
+	// WHERE to_tsvector(title) @@ to_tsquery($1)
+	// GROUP BY movies.id;`;
+	//? run our query
+	pool
+		.query(query, [`%${searchString}%`])
+		.then((result) => {
+			console.log(result.rows);
+			res.send(result.rows);
+		})
+		.catch((err) => {
+			console.log('ERROR: Get SEARCH', err);
+			res.sendStatus(500);
+		});
+});
+
 router.post('/', (req, res) => {
 	console.log(req.body);
 	// RETURNING "id" will give us back the id of the created movie

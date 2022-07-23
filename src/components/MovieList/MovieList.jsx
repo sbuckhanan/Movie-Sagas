@@ -8,11 +8,13 @@ import { useState } from 'react';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
+import { useHistory } from 'react-router-dom';
 
 function MovieList() {
 	const dispatch = useDispatch();
 	const movies = useSelector((store) => store.movies);
 	const [searchString, setSearchString] = useState('');
+	const history = useHistory();
 
 	//? get our movies on page load or refresh
 	useEffect(() => {
@@ -22,6 +24,8 @@ function MovieList() {
 	const handleSearch = (e) => {
 		e.preventDefault();
 		console.log('SEARCH FOR', searchString);
+		dispatch({ type: 'GET_SEARCH', payload: searchString });
+		history.push(`/search/${searchString}`);
 		setSearchString('');
 	};
 
