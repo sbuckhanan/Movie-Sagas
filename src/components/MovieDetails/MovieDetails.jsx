@@ -24,7 +24,9 @@ function MovieDetails() {
 			confirmButtonText: 'Yes, delete it!',
 		}).then((result) => {
 			if (result.isConfirmed) {
+				dispatch({ type: 'DELETE_MOVIE', payload: id });
 				Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+				history.push('/');
 			} else {
 				Swal.fire('Canceled!', 'Your movie is still available.', 'error');
 			}
