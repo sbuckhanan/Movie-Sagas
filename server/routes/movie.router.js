@@ -142,4 +142,21 @@ router.put('/update/:id', (req, res) => {
 		});
 });
 
+//? delete request to update our movie information
+router.delete('/:id', (req, res) => {
+	//? object destructure req.body
+	const id = req.params.id;
+	//? query that we are running
+	const queryText = `DELETE FROM movies WHERE id=$1`;
+	pool
+		.query(queryText, [id])
+		.then((result) => {
+			res.sendStatus(200);
+		})
+		.catch((err) => {
+			console.log('ERROR: UPDATE movie', err);
+			res.sendStatus(500);
+		});
+});
+
 module.exports = router;

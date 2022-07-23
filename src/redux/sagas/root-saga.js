@@ -5,8 +5,9 @@ import fetchSaga from './fetch-saga';
 import updateSaga from './update-saga';
 import searchSaga from './search-saga';
 import postSaga from './post-saga';
+import deleteSaga from './delete-saga';
 
 // Create the rootSaga generator function
 export default function* rootSaga() {
-	yield all([detailSaga(), fetchSaga(), updateSaga(), searchSaga(), postSaga()]);
+	yield all([detailSaga(), fetchSaga(), updateSaga(), searchSaga(), postSaga(), deleteSaga()]);
 }
