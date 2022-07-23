@@ -2,6 +2,21 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+//? Needed for file upload
+const multer = require('multer');
+//? required for file upload. Sets destination and name of the file
+const fileStorageEngine = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, './public/images');
+	},
+	filename: (req, file, cb) => {
+		// cb(null, Date.now() + '--' + file.originalname);
+		cb(null, file.originalname);
+	},
+});
+
+const upload = multer({ storage: fileStorageEngine });
+
 router.get('/', (req, res) => {
 	// const query = `SELECT * FROM movies ORDER BY "title" ASC`;
 	const query = `SELECT movies.id, title, poster, description, array_agg(genres.name) FROM movies JOIN movies_genres ON movies.id = movies_genres.movie_id JOIN genres ON genres.id = movies_genres.genre_id
@@ -104,6 +119,12 @@ router.post('/', (req, res) => {
 			res.sendStatus(500);
 		});
 });
+
+router.post('/image', upload.single('image'), (req, res) => {
+	//! IMAGE UPLOAD HERE
+	res.send('File uploaded successfully');
+});
+
 //? Put request to update our movie information
 router.put('/update/:id', (req, res) => {
 	//? object destructure req.body
