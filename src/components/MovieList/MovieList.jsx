@@ -28,7 +28,7 @@ function MovieList() {
 	return (
 		<main>
 			<Box
-				className='form'
+				className='formHome'
 				component='form'
 				sx={{
 					width: 500,

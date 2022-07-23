@@ -35,6 +35,7 @@ function MovieListItem({ movie }) {
 						image={movie.poster}
 						alt={movie.title}
 					/>
+					{/* <img className='picture' src={movie.poster} alt={movie.title} /> */}
 					<CardContent>
 						<Typography gutterBottom variant='h5' component='div'>
 							{movie.title}
