@@ -143,7 +143,7 @@ router.put('/update/:id', (req, res) => {
 });
 
 //? delete request to update our movie information
-router.put('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 	//? object destructure req.body
 	const id = req.params.id;
 	//? query that we are running
