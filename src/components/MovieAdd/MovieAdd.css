@@ -1,0 +1,12 @@
+.genreList {
+	list-style: none;
+}
+.movieAddButtons {
+	position: relative;
+	left: 42%;
+}
+.genreListItem {
+	display: inline;
+	margin-top: 25px;
+	margin-right: 10px;
+}

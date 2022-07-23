@@ -11,7 +11,7 @@ function Header() {
 	//? Define the things shown on the navbar
 	const navItems = [
 		{ name: 'Home', path: '/' },
-		// { name: 'About', path: '/about' },
+		{ name: 'Add Movie', path: '/add' },
 		// { name: 'Home', path: '/contact' },
 	];
 
