@@ -15,7 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/stephdaking/weekend-movie-sagas">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Redux Movie Sagas</h3>
@@ -23,7 +23,6 @@
   <p align="center">
     This is an application where you can add a list of movies. In this list of movies you will be able to view the movies Title, Description, Picture, and any genres that movie may have. You can add new movies to the list by navigating to the add movie page from the nav bar. You can edit anything about a specific movie by clicking it and then clicking the edit movie button. You can also find the option to delete the movie next to the edit button.
     <br />
-    <a href="https://github.com/stephdaking/weekend-movie-sagas"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://guarded-scrubland-35964.herokuapp.com/#/">View Demo</a>
@@ -62,46 +61,25 @@
 
 ## About The Project
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ### Built With
 
-- [![Next][next.js]][next-url]
-- [![React][react.js]][react-url]
-- [![Vue][vue.js]][vue-url]
-- [![Angular][angular.io]][angular-url]
-- [![Svelte][svelte.dev]][svelte-url]
-- [![Laravel][laravel.com]][laravel-url]
-- [![Bootstrap][bootstrap.com]][bootstrap-url]
-- [![JQuery][jquery.com]][jquery-url]
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+![react.js] ![JavaScript] ![Redux] ![Redux-Saga] ![MUI] ![PostgreSQL] ![Node.js] ![Express]
 
 ## Installation
 
 1. Clone the repository to your local computer
-2. npm
-
-```sh
-npm install
-```
-
+2. ```sh
+   npm install
+   ```
 3. Create a database called 'saga_movies_weekend'
 4. Run the database.sql file
 5. Open 2 terminals
-6. In the first terminal run
-
-```sh
-npm run server
-```
-
-7. In the second terminal run
-
-```sh
-npm run client
-```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+6. ```sh
+   npm run server
+   ```
+7. ```sh
+   npm run client
+   ```
 
 ## Contributing
 
@@ -115,15 +93,11 @@ If you have a suggestion that would make this better, please fork the repo and c
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ## Contact
 
 Your Name - buckhananstephon@gmail.com
 
 Project Link: [https://github.com/stephdaking/weekend-movie-sagas](https://github.com/stephdaking/weekend-movie-sagas)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 
@@ -147,4 +121,10 @@ Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped m
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/stephonbuckhanan
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[react-url]: https://reactjs.org/
+[javascript]: https://img.shields.io/badge/JavaScript-20232A?style=for-the-badge&logo=JavaScript&logoColor=F7DF1E
+[redux]: https://img.shields.io/badge/Redux-20232A?style=for-the-badge&logo=Redux&logoColor=764ABC
+[redux-saga]: https://img.shields.io/badge/Redux_Saga-20232A?style=for-the-badge&logo=Redux-Saga&logoColor=999999
+[mui]: https://img.shields.io/badge/Material_UI-20232A?style=for-the-badge&logo=MUI&logoColor=007FFF
+[postgresql]: https://img.shields.io/badge/PostgreSQL-20232A?style=for-the-badge&logo=PostgreSQL&logoColor=4169E1
+[node.js]: https://img.shields.io/badge/Node.js-20232A?style=for-the-badge&logo=Node.js&logoColor=339933
+[express]: https://img.shields.io/badge/Express.js-20232A?style=for-the-badge&logo=Express&logoColor=F7DF1E
